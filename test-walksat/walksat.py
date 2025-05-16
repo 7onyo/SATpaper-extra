@@ -12,23 +12,19 @@ def parse_cnf_file(filepath):
     with open(filepath, 'r') as f:
         for line in f:
             line = line.strip()
-            # Skip empty lines, comments, and lines starting with '%'
             if not line or line.startswith('c') or line.startswith('%'):
                 continue
-            # Parse problem line
             if line.startswith('p'):
                 parts = line.split()
                 if parts[1] != 'cnf':
                     raise ValueError("File is not in CNF format")
                 num_variables = int(parts[2])
                 continue
-            # Parse clause, handling only valid integers
             try:
                 literals = [int(x) for x in line.split() if x != '0']
-                if literals:  # Only add non-empty clauses
-                    clauses.append(frozenset(literals))  # Use frozenset for consistency
+                if literals: 
+                    clauses.append(frozenset(literals))  
             except ValueError:
-                # Skip lines with invalid integers
                 continue
     
     return clauses, num_variables
@@ -131,8 +127,8 @@ def test_all_cnf_files(folder_path, output_csv, max_flips=10000, p=0.5):
                 print(f"{filename}: ERROR - {e}")
 
 if __name__ == "__main__":
-    test_folder = "benchmarks"  # Folder containing .cnf files
-    output_file = "walksat_results.csv"  # Output CSV file
+    test_folder = "benchmarks"  
+    output_file = "walksat_results.csv"  
     max_flips = 10000
     probability = 0.5
     test_all_cnf_files(test_folder, output_file, max_flips, probability)
