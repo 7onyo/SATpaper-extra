@@ -1,0 +1,11 @@
+filename,time_sec,peak_mem_kb,result
+1.cnf,0.0004,15,SAT
+10.cnf,0.0000,0,SAT
+2.cnf,0.0006,9,SAT
+3.cnf,0.0003,3,SAT
+4.cnf,0.0005,4,SAT
+5.cnf,0.0003,4,SAT
+6.cnf,0.0005,4,SAT
+7.cnf,0.0004,4,SAT
+8.cnf,0.0003,3,SAT
+9.cnf,0.0003,4,SAT
